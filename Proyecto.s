@@ -13,7 +13,7 @@ num_total:     .word 129      ; Variable para almacenar el número de estacionam
 .text
 .global _start
 
-_start:
+_start
     ; Configurar los pines de los sensores como entradas y el GPIO como salida
     ldr r0, =GPIO_BASE
 	ldr r1, =SENSOR_BASE
@@ -24,26 +24,26 @@ _start:
     mov r6, #0         ; Número de estacionamiento
     mov r7, #0         ; Piso
 
-loop:;---Falta Agregar salida del loop---
+loop 
     ; Leer el estado de los sensores
 	add r1, r1, #1; Desplazar al siguiente sensor
-    ldr r3, r1; Cargar valor de sensor
+    	ldr r3, r1; Cargar valor de sensor
 	BL check_sensors
 	add r5, r5, #1;
 	CMP r5, #129
 	BNE loop
 	BEQ sensor_no_ocupado
 
-check_sensors:
-    tst r3, #1         ; Verificar el bit menos significativo (Sensor de estacionamiento actual)
+check_sensors
+    tst r3, #1         		; Verificar el bit menos significativo (Sensor de estacionamiento actual)
     beq sensor_no_ocupado       ; Saltar si el bit es 0 (espacio no ocupado)
-	BX LR ;Si no volver al loop
+    BX LR 			;Si no volver al loop
 
-sensor_no_ocupado:
-    ; Calcular el piso y el número de estacionamiento
-    ldr r3, =43       ; Número de estacionamientos por piso, udiv no puede usar inmediato
-    udiv r7, r5, r3   ; Cálculo del piso (usando división entera)
-    add r6, r5, r7      ; Número de estacionamiento (comienza desde 0)
+sensor_no_ocupado
+    	; Calcular el piso y el número de estacionamiento
+    	ldr r3, =43       	; Número de estacionamientos por piso, udiv no puede usar inmediato
+    	udiv r7, r5, r3   	; Cálculo del piso (usando división entera)
+    	add r6, r5, r7      ; Número de estacionamiento (comienza desde 0)
 
 	mov r2,#1; Mandar datos y flag para detener loops
 	b Send_byte_UART;
