@@ -30,7 +30,9 @@ loop:;---Falta Agregar salida del loop---
     ldr r3, r1; Cargar valor de sensor
 	BL check_sensors
 	add r5, r5, #1;
-	B loop
+	CMP r5, #129
+	BNE loop
+	BEQ sensor_no_ocupado
 
 check_sensors:
     tst r3, #1         ; Verificar el bit menos significativo (Sensor de estacionamiento actual)
