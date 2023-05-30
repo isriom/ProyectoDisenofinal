@@ -1,5 +1,5 @@
 	AREA reset, DATA, READONLY
-
+		EXPORT __Vectors
 
 __Vectors
 	DCD 0x20001000 ; stack pointer value when stack is empty
@@ -18,7 +18,7 @@ Reset_Handler
 GPIO_BASE EQU 0x20000000      ;//@ Dirección base del registro GPIO
 GPIO_SET_OFFSET EQU 0x04      ;// Final del registro GPIO 
 GPIO_REQUEST EQU 0x20000001;
-SENSOR_BASE EQU 0x00      ; //Dirección base del registro de Sensores
+SENSOR_BASE EQU 0x20000050      ; //Dirección base del registro de Sensores
 SENSOR_SET_OFFSET EQU 0x82      ;// Final del registro Sensores 
 
 _start
@@ -37,6 +37,7 @@ _start
     B preloop
 	
 preloop;
+	ldr r8, [r3]
 	CMP R8, #1
 	BEQ loop
 	BNE preloop
@@ -67,12 +68,12 @@ sensor_no_ocupado
 	b Send_byte_UART;
 
 Send_byte_UART	;---cargar a GPIO los datos(Piso y numero)---
-	STR r7, [r0, #1] ; carga el piso
-	STR r6, [r0, #1] ; carga el número de estacionamiento
+	STR r7, [r0, #4] ; carga el piso
+	STR r6, [r0, #8] ; carga el número de estacionamiento
 	b _start
 	
 Send_Error_UART	;---cargar a GPIO los datos(Piso y numero)---
 	mov r3, #99 
-	STR r3, [r0, #1] ; carga el piso
-	STR r3, [r0, #1] ; carga el número de estacionamiento
+	STR r3, [r0, #4] ; carga el piso
+	STR r3, [r0, #8] ; carga el número de estacionamiento
 	b _start

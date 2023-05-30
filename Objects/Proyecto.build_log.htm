@@ -29,17 +29,18 @@ Project File Date:  05/30/2023
 *** Note: Rebuilding project, since 'Options->Output->Create Batch File' is selected.
 Rebuild target 'Target 1'
 assembling Proyecto.s...
-"Proyecto.s", line 79: Warning: A1313W: Missing END directive at end of file
-   79 00000076 
-"Proyecto.s", line 79: Warning: A1581W: Added 2 bytes of padding at address 0x76
-   79 00000078 
-0 Errors, 2 Warnings
+"Proyecto.s", line 62 (column 7): Error: A1647E: Bad register name symbol, expected Integer register
+   62 0000004a   str #1,[r3];
+                     ^
+"Proyecto.s", line 81: Warning: A1313W: Missing END directive at end of file
+   81 00000070 
+1 Error, 1 Warning
 linking...
-.\Objects\Proyecto.sct(8): warning: L6314W: No section matches pattern *(InRoot$$Sections).
-Program Size: Code=124 RO-data=0 RW-data=8 ZI-data=0  
-Finished: 0 information, 1 warning and 0 error messages.
-FromELF: creating hex file...
-".\Objects\Proyecto.axf" - 0 Error(s), 1 Warning(s).
+.\Objects\Proyecto.axf: error: L6002U: Could not open file .\objects\proyecto.o: No such file or directory
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning, 0 error and 1 fatal error messages.
+".\Objects\Proyecto.axf" - 1 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -49,10 +50,11 @@ Package Vendor: ARM
                 CMSIS (Common Microcontroller Software Interface Standard)
 
 <h2>Collection of Component include folders:</h2>
-  C:/Users/2001i/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM7/Include
+  C:/Users/2001i/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM4/Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Target not created.
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

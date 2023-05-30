@@ -1,8 +1,7 @@
 SET PATH=C:\Keil_v5\ARM\ARMCLANG\Bin;C:\Users\2001i\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\2001i\AppData\Local\Programs\Python\Python311\;C:\Program Files\Microsoft\jdk-11.0.16.101-hotspot\bin;C:\Program Files\Microsoft\jdk-11.0.12.7-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Git\cmd;C:\Program Files\CMake\bin;C:\Users\2001i\Downloads\winlibs-x86_64-posix-seh-gcc-12.2.0-llvm-15.0.7-mingw-w64ucrt-10.0.0-r4\mingw64\bin;;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\dotnet\;C:\Program Files\GitHub CLI\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Users\2001i\AppData\Local\Microsoft\WindowsApps;C:\Users\2001i\.dotnet\tools;C:\Users\2001i\AppData\Local\JetBrains\Toolbox\scripts;C:\Users\2001i\AppData\Local\Programs\Azure Data Studio\bin;C:\Users\2001i\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\CMake\bin;C:\Users\2001i\Downloads\winlibs-x86_64-posix-seh-gcc-12.2.0-llvm-15.0.7-mingw-w64ucrt-10.0.0-r4\mingw64\bin;;D:\Intel\Quartz\modelsim_ase\win32aloem;C:\Users\2001i\.dotnet\tools;C:\Users\2001i\AppData\Roaming\npm
-SET CPU_TYPE=ARMCM7
+SET CPU_TYPE=ARMCM4
 SET CPU_VENDOR=ARM
 SET UV2_TARGET=Target 1
 SET CPU_CLOCK=0x00B71B00
 "C:\Keil_v5\ARM\ARMCLANG\Bin\ArmClang.exe" @".\objects\proyecto._ac"
 "C:\Keil_v5\ARM\ARMCLANG\Bin\ArmLink" --Via ".\Objects\Proyecto.lnp"
-"C:\Keil_v5\ARM\ARMCLANG\Bin\fromelf.exe" ".\Objects\Proyecto.axf" --i32combined --output ".\Objects\Proyecto.hex"
