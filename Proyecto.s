@@ -1,6 +1,6 @@
 	AREA reset, DATA, READONLY
-
-
+		EXPORT __Vectors
+		
 __Vectors
 	DCD 0x20001000 ; stack pointer value when stack is empty
 	DCD Reset_Handler ; reset vector
@@ -14,11 +14,11 @@ __Vectors
 		
 Reset_Handler
 
-	; Definición de registros. Estos son mandados en el modulo de red
+; Definición de registros. Estos son mandados en el modulo de red
 GPIO_BASE EQU 0x20000000      ;//@ Dirección base del registro GPIO
 GPIO_SET_OFFSET EQU 0x04      ;// Final del registro GPIO 
 GPIO_REQUEST EQU 0x20000001;
-SENSOR_BASE EQU 0x00      ; //Dirección base del registro de Sensores
+SENSOR_BASE EQU 0x20000050     ; //Dirección base del registro de Sensores
 SENSOR_SET_OFFSET EQU 0x82      ;// Final del registro Sensores 
 
 _start
@@ -58,17 +58,19 @@ check_sensors
 
 sensor_no_ocupado
     	; Calcular el piso y el número de estacionamiento
+		mov r9, #1
+		str r9, [r1]
     	ldr r3, =43       	; Número de estacionamientos por piso, udiv no puede usar inmediato
     	udiv r7, r5, r3   	; Cálculo del piso (usando división entera)
     	sub r6, r5, r7      ; Número de estacionamiento (comienza desde 0)
 		mul r3, r6, r3 ; 
 	
-	mov r2,#1; Mandar datos y flag para detener loops
-	b Send_byte_UART;
+		mov r2,#1; Mandar datos y flag para detener loops
+		b Send_byte_UART;
 
 Send_byte_UART	;---cargar a GPIO los datos(Piso y numero)---
-	STR r7, [r0, #1] ; carga el piso
-	STR r6, [r0, #1] ; carga el número de estacionamiento
+	STR r7, [r0, #0x04] ; carga el piso
+	STR r6, [r0, #0x08] ; carga el número de estacionamiento
 	b _start
 	
 Send_Error_UART	;---cargar a GPIO los datos(Piso y numero)---
@@ -76,3 +78,5 @@ Send_Error_UART	;---cargar a GPIO los datos(Piso y numero)---
 	STR r3, [r0, #1] ; carga el piso
 	STR r3, [r0, #1] ; carga el número de estacionamiento
 	b _start
+
+END
