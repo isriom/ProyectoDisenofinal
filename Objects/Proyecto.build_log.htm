@@ -22,92 +22,24 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 C:\Users\2001i\Desktop\diseño\Proyecto.uvprojx
-Project File Date:  05/28/2023
+Project File Date:  05/30/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
-Build target 'Target 1'
-Proyecto.s(1): error: unexpected token in operand
-; Definición de registros. Estos son mandados en el modulo de red
-Proyecto.s(2): error: unexpected token in operand
-.equ GPIO_BASE, 0x20000000      ; Dirección base del registro GPIO
-Proyecto.s(3): error: unexpected token in argument list
-.equ GPIO_SET_OFFSET, 0x04      ; Final del registro GPIO 
-                                            ^
-Proyecto.s(5): error: unexpected token in operand
-.equ SENSOR_BASE, 0x00      ; Dirección base del registro de Sensores
-Proyecto.s(6): error: unexpected token in argument list
-.equ SENSOR_SET_OFFSET, 0x82      ; Final del registro Sensores 
-                                              ^
-Proyecto.s(9): error: unexpected token in argument list
-piso:    .word 3      ; Variable para almacenar el piso disponible
-                                      ^
-Proyecto.s(10): error: unexpected token in argument list
-num_piso:     .word 43      ; Variable para almacenar el número de estacionamiento disponible
-Proyecto.s(11): error: unexpected token in argument list
-num_total:     .word 129      ; Variable para almacenar el número de estacionamiento disponible
-Proyecto.s(17): error: unexpected token in argument list
-    ; Configurar los pines de los sensores como entradas y el GPIO como salida
-                     ^
-Proyecto.s(20): error: unexpected token in argument list
-        mov r2, #0 ; flag de enviar datos por medio de GPIO_BASE y salir del loop;
-                             ^
-Proyecto.s(21): error: unexpected token in argument list
-        ;r3 para calculos
-                 ^
-Proyecto.s(22): error: unexpected token in operand
-        mov r4, #129       ; Número total de estacionamientos
-Proyecto.s(23): error: unexpected token in argument list
-    mov r5, #0         ; Contador de iteraciones
-                                     ^
-Proyecto.s(24): error: unexpected token in operand
-    mov r6, #0         ; Número de estacionamiento
-Proyecto.s(25): error: invalid instruction
-    mov r7, #0         ; Piso
-                         ^
-Proyecto.s(27): error: unexpected token at start of statement
-loop:;---Falta Agregar salida del loop---
-      ^
-Proyecto.s(28): error: unexpected token in argument list
-    ; Leer el estado de los sensores
-              ^
-Proyecto.s(29): error: unexpected token in argument list
-        add r1, r1, #1; Desplazar al siguiente sensor
-                                     ^
-Proyecto.s(30): error: invalid operand for instruction
-    ldr r3, r1; Cargar valor de sensor
-            ^
-Proyecto.s(30): error: unexpected token in argument list
-    ldr r3, r1; Cargar valor de sensor
-                             ^
-Proyecto.s(32): error: unexpected token in operand
-        add r4,
-               ^
-Proyecto.s(36): error: unexpected token in argument list
-    tst r3, #1         ; Verificar el bit menos significativo (Sensor de estacionamiento actual)
-                                      ^
-Proyecto.s(37): error: unexpected token in argument list
-    beq sensor_no_ocupado       ; Saltar si el bit es 0 (espacio no ocupado)
-                                            ^
-Proyecto.s(38): error: unexpected token in argument list
-        b loop ;Si no volver al loop
-                      ^
-Proyecto.s(41): error: unexpected token in argument list
-    ; Calcular el piso y el número de estacionamiento
-Proyecto.s(42): error: unexpected token in operand
-    ldr r3, =43       ; Número de estacionamientos por piso, udiv no puede usar inmediato
-Proyecto.s(43): error: unexpected token in operand
-    udiv r7, r5, r3   ; Cálculo del piso (usando división entera)
-Proyecto.s(44): error: unexpected token in operand
-    add r6, r5, r7      ; Número de estacionamiento (comienza desde 0)
-Proyecto.s(46): error: unexpected token in argument list
-        mov r2,#1; Mandar datos y flag para detener loops
-                                ^
-Proyecto.s(49): error: unexpected token at start of statement
-Send_byte_UART: ;---cargar a GPIO los datos(Piso y numero)---
-                 ^
+*** Note: Rebuilding project, since 'Options->Output->Create Batch File' is selected.
+Rebuild target 'Target 1'
 assembling Proyecto.s...
-".\Objects\Proyecto.axf" - 30 Error(s), 0 Warning(s).
+"Proyecto.s", line 79: Warning: A1313W: Missing END directive at end of file
+   79 00000076 
+"Proyecto.s", line 79: Warning: A1581W: Added 2 bytes of padding at address 0x76
+   79 00000078 
+0 Errors, 2 Warnings
+linking...
+.\Objects\Proyecto.sct(8): warning: L6314W: No section matches pattern *(InRoot$$Sections).
+Program Size: Code=124 RO-data=0 RW-data=8 ZI-data=0  
+Finished: 0 information, 1 warning and 0 error messages.
+FromELF: creating hex file...
+".\Objects\Proyecto.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -116,34 +48,11 @@ Package Vendor: ARM
                 ARM.CMSIS.5.9.0
                 CMSIS (Common Microcontroller Software Interface Standard)
 
-Package Vendor: Keil
-                https://www.keil.com/pack/Keil.ARM_Compiler.1.7.2.pack
-                Keil.ARM_Compiler.1.7.2
-                Keil ARM Compiler extensions for ARM Compiler 5 and ARM Compiler 6
-   * Component: STDERR Variant: ITM Version: 1.2.0
-   * Component: STDIN Variant: ITM Version: 1.2.0
-   * Component: STDOUT Variant: ITM Version: 1.2.0
-   * Component: TTY Variant: ITM Version: 1.2.0
-
 <h2>Collection of Component include folders:</h2>
-  ./RTE/_Target_1
   C:/Users/2001i/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM7/Include
 
 <h2>Collection of Component Files used:</h2>
-
-   * Component: Keil.ARM Compiler::Compiler:I/O:STDERR:ITM:1.2.0
-      Source file:   Source/retarget_io.c
-
-   * Component: Keil.ARM Compiler::Compiler:I/O:STDIN:ITM:1.2.0
-      Source file:   Source/retarget_io.c
-
-   * Component: Keil.ARM Compiler::Compiler:I/O:STDOUT:ITM:1.2.0
-      Source file:   Source/retarget_io.c
-
-   * Component: Keil.ARM Compiler::Compiler:I/O:TTY:ITM:1.2.0
-      Source file:   Source/retarget_io.c
-Target not created.
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

@@ -1,0 +1,6 @@
+--cpu Cortex-M7 --fpu=SoftVFP
+".\objects\proyecto.o"
+--strict --scatter ".\Objects\Proyecto.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\Proyecto.map" -o .\Objects\Proyecto.axf

@@ -1,0 +1,13 @@
+-xc -std=c90 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=none -mfloat-abi=soft -c
+-fno-rtti -funsigned-char -fshort-enums -fshort-wchar
+-D__RTX -D__EVAL -mlittle-endian -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier
+-I./RTE/CMSIS
+-I./RTE/Compiler
+-I./RTE/_Target_1
+-IC:/Users/2001i/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+-IC:/Users/2001i/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/RTOS2/Include
+-IC:/Users/2001i/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/RTOS2/RTX/Include
+-IC:/Users/2001i/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM7/Include
+-IC:/Users/2001i/AppData/Local/Arm/Packs/Keil/ARM_Compiler/1.7.2/Include
+-D__UVISION_VERSION="538" -D_RTE_ -DARMCM7 -D_RTE_
+-o ./objects/rtx_lib.o -MD "C:/Users/2001i/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/RTOS2/RTX/Source/rtx_lib.c"

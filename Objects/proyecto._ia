@@ -1,0 +1,7 @@
+--cpu Cortex-M7 --fpu=SoftVFP --li --pd "__EVAL SETA 1" -g --diag_suppress=A1950W
+-IC:\Users\2001i\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\Device\ARM\ARMCM7\Include
+--pd "__UVISION_VERSION SETA 538"
+--pd "ARMCM7 SETA 1"
+--list .\listings\proyecto.lst
+--xref -o .\objects\proyecto.o
+--depend .\objects\proyecto.d "Proyecto.s"
