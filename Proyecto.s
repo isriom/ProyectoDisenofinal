@@ -19,7 +19,7 @@ Reset_Handler
 
 	.equ SENSOR_BASE, 0x00      ; Dirección base del registro de Sensores
 	.equ SENSOR_SET_OFFSET, 0x82      ; Final del registro Sensores 
-
+	
 	.data
 	piso:    .word 3      ; Variable para almacenar el piso disponible
 	num_piso:     .word 43      ; Variable para almacenar el número de estacionamiento disponible
@@ -37,6 +37,13 @@ _start
     mov r5, #0         ; Contador de iteraciones
     mov r6, #0         ; Número de estacionamiento
     mov r7, #0         ; Piso
+    ; falta registro de flag para comenzar a buscar
+    ldr r8, =
+    B preeloop
+preloop
+	CMP R8, #1
+	BEQ loop
+	BNE preloop
 
 loop 
     ; Leer el estado de los sensores
@@ -66,4 +73,4 @@ sensor_no_ocupado
 Send_byte_UART:	;---cargar a GPIO los datos(Piso y numero)---
 	STR r7, [r0, #1] ; carga el piso
 	STR r6, [r0, #1] ; carga el número de estacionamiento
-	b loop
+	b start
